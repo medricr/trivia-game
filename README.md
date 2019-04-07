@@ -6,6 +6,7 @@ A basic trivia game. The user will be presented with 5 questions, each of which 
 
 # QUESTIONS
 1 - What was the title of The Twilight Zone's (1959) pilot episode?
+
     a. Where is Everybody?
     b. Nightmare at 20,000 Feet
     c. King Nine Will Not Return
@@ -30,12 +31,14 @@ A basic trivia game. The user will be presented with 5 questions, each of which 
     d. Something Wicked This Way Comes
 
 5 - Before writing "The Sparrow" in 1996, Mary Doria Russell had earned a PHD in :
+
     a. Biological Anthropology
     b. Mechanical Engineering
     c. Music Theory
     d. Dentistry
 
 6 - Which of the following radio plays caused widespread panic upon its release?
+
     a. War of the Worlds
     b. The Day The Earth Stood Still
     c. Time Machine
