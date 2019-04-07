@@ -12,16 +12,16 @@ A basic trivia game. The user will be presented with 5 questions, each of which 
     fjkslfjdkls
 
 # APP.JS DESIGN/PSEUDOCODE
-app start
-    begin question loop
-        the user is presented with a questions
-            the users choice of the available options is logged
-                if correct
-                    goodGuess++
-                else
-                    badGuess++
-        do this until there are no more questions availabe
-    end question loop
+>app start
+    >begin question loop
+        >the user is presented with a questions
+            >the users choice of the available options is logged
+                >if correct
+                    >goodGuess++
+                >else
+                    >badGuess++
+        >do this until there are no more questions availabe
+    >end question loop
 
     present the user with their score
 
