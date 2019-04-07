@@ -4,7 +4,7 @@ A timed, trivia game with a multiple choice format
 # Game Description
 A basic trivia game. The user will be presented with 5 questions, each of which will have three potential answers, only one of which is correct. The user will be prompted to select one of those three answers. If the user's guess is correct, it will be logged as such, and vis versa. At the end of the game, the user will be presented with their score, as a ratio, and be given a letter grade based on their preformance. 
 
-# QUESTIONS
+## QUESTIONS
 1 - What was the title of The Twilight Zone's (1959) pilot episode?
 
     a. Where is Everybody?
@@ -13,18 +13,21 @@ A basic trivia game. The user will be presented with 5 questions, each of which 
     d. I Sing The Body Electric
 
 2 - What is the last name of 2001: A Space Oddyssey's protagonist?
+
     a. Bowman
     b. Clarke
     c. Banner
     d. McElroy
 
 3 - Octavia Butler's anthology "Lillith's Brood" does not contain which of the following books?
+
     a. Dawn
     b. Fledgeling
     c. Adulthood Rites
     d. Imago
 
 4 - Which of the following Ray Bradbury novels was recently turned into an HBO miniseries starring Michael B. Jordan?
+
     a. Farenheit 451
     b. Martian Chronicles
     c. The Illustrated Man
@@ -44,10 +47,20 @@ A basic trivia game. The user will be presented with 5 questions, each of which 
     c. Time Machine
     d. King Kong
 
-7 - 
+7 - This classic science fiction series is often miscredited as having broadcast the first interracial kiss on US telivision
 
+    a. Star Trek
+    b. The Twilight Zone
+    c. The Outer Limits
+    d. The Six Million Dollar Man
 
+8 - Which of the following authors is often credited with writing the "first" science fiction novel?
 
+    a. Mary Shelley
+    b. H.G. Wells
+    c. Victor Hugo
+    d. H.P. Lovecraft
+S
 # APP.JS VARS
     goodGuess [int] - tracks correct guesses
     badGuess [int] - tracks incorrect guesses
