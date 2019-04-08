@@ -1,0 +1,6 @@
+body {
+    /* Photo by NASA on Unsplash */
+    background: url("../images/background.jpg");
+    background-size: cover;
+    font-family: 'Exo 2',sans-serif;
+}
