@@ -1,6 +1,16 @@
 body {
+    /* Background styling */
     /* Photo by NASA on Unsplash */
     background: url("../images/background.jpg");
     background-size: cover;
+    /* Text styling */
     font-family: 'Exo 2',sans-serif;
+    color: whitesmoke;    
+}
+
+/* qbar styling */
+.qbar {
+    opacity: 1;
+    background-color: thistle;
+    border: solid skyblue 1px;
 }
