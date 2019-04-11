@@ -1,87 +1,110 @@
 // Variables for tracking user preformance
-var goodGuess = 0;
-var badGuess = 0;
-var qbank = [];
-var intervalId;
-var time;
+var correct_guesses = 0;
+var incorrect_guesses = 0;
 // Boolean variables for running the game
-var answered = false;
-var clockRunning = false;
-
-
-
-// Qpack object, which will hold a question, and its answers
-function qpack(q, question_bank, answer_index) {
-
-    this.question = q;
-    this.answers = question_bank;
-    this.right_answer = answer_index;
-}
-
+// var answered = false;
+var clock_running = false;
+var question_bank;
+var intervalId;
+var time = 20;
+var answer_array = [];
+// function that will count down the timer as it is running
 function count() {
-    time--;
-
-    $(".timer").text(time);
+    if (clock_running) {
+        time--;
+        $(".timer").text(time);
+    }
+    if (time == 0) { stop(); }
 }
-
-// function that will prompt the user with questions and answers
-function ask(question_pack) {
-    time = 20;
-    intervalId = setInterval(count,1000);
-    clockRunning=true;
+// function that will start the timer counting at 20
+function start() {
+    time = 21;
+    intervalId = setInterval(count, 1000);
+    clock_running = true;
+}
+// function that will stop the clock from running
+function stop() {
+    clearInterval(intervalId);
+    clock_running = false;
+}
+// function that will shuffle array (Durstenfeld Shuffle: Found on Stackoverflow, provided by Laurens Holst)
+function shuffle(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+}
+// function that will create the question/answer card
+function create_card(question_pack) {
     // STEP 1: fill the question space in the html with the question from qpack
-    $(".question_space").text(question_pack.question);
-    // alert(this.right_answer);
+    $(".question_space").html(question_pack.question);
     // STEP 2: create a button for each answer
-    for(let i=0; i<question_pack.answers.length; i++) {
+    answer_array = question_pack.incorrect_answers;
+    answer_array.push(question_pack.correct_answer);
+    shuffle(answer_array);
+    for (let i = 0; i < answer_array.length; i++) {
         // create a new button...
         var answerbutton = $('<button class="btn answer-btn"><span class="btn-text"></span></button>');
         // fill it with the appropriate text...
-        $(answerbutton).text(question_pack.answers[i]);
+        $(answerbutton).html(answer_array[i]);
         // give it an ID so that it can be referenced later
-        $(answerbutton).attr("id",i);
+        $(answerbutton).attr("id", i);
         // and append it to the question bar in the html
-        $(".qbar").append(answerbutton);
-        $(".qbar").append('</br>');
+        $(".answer_space").append(answerbutton);
+        $(".answer_space").append('</br>');
     };
 
+}
+function result_card(good_guess)
+// function that will prompt the user with questions and answers
+function ask(question_pack) {
+    start();
     // when an answer button is clicked....
-    $(".answer-btn").on("click",function() {
+    $(".answer-btn").on("click", function () {
         // grab its id and check against the right_anser variable. if true...
-        if(this.id == question_pack.right_answer) {
-            // alert the user
-            alert("correct");
+        if ($(this).text() == question_pack.correct_answer) {
+            stop();
             // increment good guess
-            goodGuess++;
-            // and return true
-            return true;
+            correct_guesses++;
+            // dequeue qbank
+            question_bank.shift();
+            // switch answered to true
+            answered = true;
+            // if qbank still has elements in it
+            if (question_bank[0] != null) { 
+                $(".answer_space").empty();
+                create_card(question_bank[0]);
+                ask(question_bank[0]);
+            }
+            return;
         }
         else {
+            stop();
             alert("incorrect");
-            badGuess++;
-            return false;
+            incorrect_guesses++;
+            answered = true;
+            return;
         }
     })
-
 };
-var ans_set_0=["medric","peter","claire","james"];
-var ans_set_1=["daly city","sacramento","oakland","davis"];
-var question0 = new qpack("What is my name?",ans_set_0,0);
-// var question0 = new qpack("What is my name?", qbank0,0);
-var question1 = new qpack("what city are we in?",ans_set_1,3)
-
-qbank=[question0,question1];
-
-
-$(document).ready(function() {
-// alert(question0.right_answer);
-$(".qbar").hide();
-$("#start-btn").on("click",function() {
-
-    $("#start-btn").hide();
-    $(".qbar").show();
-    ask(question0);
-});
-
-
+// program is ready to fire  
+$(document).ready(function () {
+    $(".qbar").hide();
+    $.ajax({
+        url: "https://opentdb.com/api.php?amount=5&category=15&difficulty=easy&type=multiple",
+        method: "GET"
+    }).then(function(response) {
+        question_bank = response.results;
+        // when the user clicks the start button...
+        $("#start-btn").on("click", function () {
+        // hide it...
+        $("#start-btn").hide();
+        // reveal the question bar
+        $(".qbar").show();
+    });
+    create_card(question_bank[0]);
+    ask(question_bank[0]); 
+    })
 });
