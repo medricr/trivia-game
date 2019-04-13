@@ -20,18 +20,20 @@
         <!-- title bar: this wil hold the header for the page -->
         <div class="row title-bar">
             <div class="col-sm-12 header">
-                <h2>Science Fiction Trivia!</h2>
-                <h4>Test your knowledge of science fiction! Click the start button to begin</h4>
+                <h2>Mythology Trivia!</h2>
+                <h4>Test your knowledge of classical Mythology! Click the start button to begin</h4>
                 <button class="btn btn-primary" id="start-btn">START</button>
             </div>
         </div>
         <!-- question bar (qbar): this will hold all of the questions presented to the user -->
         <div class="row">
             <div class="col-sm-12 qbar rounded">
-                <h2><span class="timer">20</span></h2>
+                <h2><span class="timer"></span></h2>
                 <h4><span class="question_space"></span></h4>
                 <span class="answer_space"></span>
-
+            </div>
+            <div class=" col-sm-12 result_card rounded">
+                <h4 id="result"></h4>
             </div>
             <!-- this div will hold all appended divs which contain questions/answers -->
         </div>

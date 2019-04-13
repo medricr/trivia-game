@@ -14,3 +14,9 @@ body {
     background-color: thistle;
     border: solid skyblue 1px;
 }
+
+.result_card {
+    opacity: 1;
+    background-color: thistle;
+    border: solid skyblue 1px;
+}
