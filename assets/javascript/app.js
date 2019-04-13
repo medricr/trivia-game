@@ -34,9 +34,7 @@ function stop() {
     if(!question_answered){
         // log as a strike...
         incorrect_guesses++;
-        // 
         question_bank.shift();
-        alert("you didnt guess");
         $(".qbar").hide();
         $(".result_card").show();
         $("#result").text("Incorrect. That's "+incorrect_guesses+" bad guesses so far, better luck next time!")
@@ -111,7 +109,6 @@ function ask() {
             setTimeout(function(){
                 $(".qbar").show();
                 $(".result_card").hide();
-                
                 if (question_bank[0] != null) { 
                     // good_guess = true;
                     ask();
